@@ -25,10 +25,13 @@ class Engine {
     this.run = this.run.bind(this);
 
     this.animationFrameRequest = null;
+
+    this.timeSinceLastUpdate = window.performance.now();
   }
 
   /**
-   * execulte single cycle of game loop
+   * execute single cycle of game loop.
+   * deltaTime (Time between current and last Update Call) will passed to update() method as a parameter
    *
    * @author Himanshu Varshney
    * @param {number} timeStamp DOMHighResTimeStamp at point in time when requestAnimationFrame() starts to execute this function.
@@ -36,6 +39,7 @@ class Engine {
 
   run = function (timeStamp) {
     this.elapsedTime += timeStamp - this.timeSinceOrigin;
+
     this.timeSinceOrigin = timeStamp;
 
     if (this.elapsedTime >= this.timeStep * 3) {
@@ -44,8 +48,10 @@ class Engine {
 
     while (this.elapsedTime >= this.timeStep) {
       this.elapsedTime -= this.timeStep;
-      this.update(timeStamp);
+      let deltaTimeInSeconds = (timeStamp - this.timeSinceLastUpdate) / 1000;
+      this.update(deltaTimeInSeconds);
       this.updated = true;
+      this.timeSinceLastUpdate = window.performance.now();
     }
 
     if (this.updated) {
