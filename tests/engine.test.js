@@ -6,7 +6,7 @@ jest.useFakeTimers();
 test("should throw an error if non-number frameRate is passed in the constructor", () => {
   const t = () => {
     new Engine(
-      null,
+      false,
       () => {},
       () => {}
     );
