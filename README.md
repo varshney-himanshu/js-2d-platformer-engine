@@ -9,8 +9,8 @@ Add more entries of the tech stack as the project grows & developers over time -
 
 We use the following set of technologies to build, design & host the website.
 
-- [Node.js](https://nextjs.org/)
-- [Javascript](https://www.typescriptlang.org)
+- [Node.js](https://www.w3schools.com/nodejs/)
+- [Javascript](https://www.w3schools.com/js/)
 - [Jest](https://jestjs.io)
 
 ### Installation
